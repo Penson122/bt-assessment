@@ -1,0 +1,22 @@
+{
+  "name": "bt-assessment",
+  "version": "1.0.0",
+  "description": "Log parser system",
+  "main": "app.js",
+  "scripts": {
+    "test": "mocha test --exit"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Penson122/bt-assessment.git"
+  },
+  "author": "Jack Penson",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/Penson122/bt-assessment/issues"
+  },
+  "homepage": "https://github.com/Penson122/bt-assessment#readme",
+  "devDependencies": {
+    "chai": "^4.1.2"
+  }
+}
