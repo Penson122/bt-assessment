@@ -21,12 +21,18 @@ class Parser {
    *
    * @returns {undefined}
    */
-  readFile () { this.file = fs.readFileSync(path.join(__dirname, this.path), 'utf8'); }
+  readFile () {
+    try {
+      this.file = fs.readFileSync(path.join(__dirname, this.path), 'utf8');
+    } catch (e) {
+      throw e;
+    }
+  }
 
   /**
-   * convertToReports - description
+   * convertToReports - Serialise the incoming log reports into manageable objects.
    *
-   * @returns {NodeReport[]}  description
+   * @returns {NodeReport[]} NodeReports containing names, notification types, and lost or found nodes.
    */
   convertToReports () {
     if (this.file === '') {
@@ -39,10 +45,11 @@ class Parser {
   }
 
   /**
-   * @static parseReports - description
+   * @static parseReports - Convert an array of node reports into an array of Node objects to find alive or dead nodes.
    *
-   * @param  {NodeReport[]} reports description
-   * @returns {Node[]}         description
+   * @param  {NodeReport[]} reports A serialised report of node logs
+   * @returns {Node[]}              An array of Node objects containing their current status
+   *                                - ALIVE/DEAD, last response time
    */
   static parseReports (reports) {
     return reports.reduce((nodes, r) => {

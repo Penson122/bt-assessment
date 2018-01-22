@@ -24,6 +24,10 @@ describe('Parser tests', () => {
       expect(parser.file).to.be.a('string');
       expect(parser.file).to.have.length.above(1);
     });
+    it('throws on bad file path', () => {
+      const parser = new Parser('foobarbaz.invalidfile');
+      expect(() => parser.readFile()).to.throw(Error);
+    });
     it('Throws error if there is nothing to read', () => {
       const parser = new Parser(FILE_PATH);
       expect(() => parser.convertToReports()).to.throw('File is empty');

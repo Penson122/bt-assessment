@@ -9,18 +9,18 @@ This submission is written for Node 6.11, code is written according the eslint s
   * `nvm use`
   * `nvm deactivate` to return to system node version
 
-* Get dependencies (test frameworks)
+* Get dependencies (test frameworks, coverage, documentation)
   * `npm install`
 
 * Show tests
   * `npm test`
 * Show coverage
-  * `npm coverage`
+  * `npm run coverage`
 * Show docs
-  * `npm docs`
+  * `npm run docs`
 
 * Run parser against file
-  * `node app.js input.txt`
+  * `node app.js test/resources/exampleInput.txt`
 
 Example input file
 ```

@@ -3,10 +3,10 @@ const Notification = Object.freeze({ HELLO: 'HELLO', LOST: 'LOST', FOUND: 'FOUND
 
 class Node {
   /**
-   * constructor - description
+   * constructor - Create a new node, used for converting to the console output format
    *
-   * @param  {type} name description
-   * @returns {type}      description
+   * @param  {string} name The name of this node, vader, luke, etc
+   * @returns {Node}       A new Node object
    */
   constructor (name) {
     this.name = name;
@@ -14,32 +14,34 @@ class Node {
   }
 
   /**
-   * setAlive - description
+   * setAlive - Set if this node is alive or not, changes report from ALIVE to DEAD, is determined if the node sends
+   * HELLO or notifies on the status of another node
    *
-   * @param  {type} isAlive description
-   * @returns {type}         description
+   * @param  {bool} isAlive Is the node alive?
+   * @returns {undefined}   no return
    */
   setAlive (isAlive) {
     this.isAlive = isAlive;
   }
 
   /**
-   * setTimeReceived - description
+   * setTimeReceived - Set the time of the last update to this node
    *
-   * @param  {type} time description
-   * @returns {type}      description
+   * @param  {number} time The unix time stamp that the node was last updated
+   * @returns {undefined}  no return
    */
   setTimeReceived (time) {
     this.timeReceived = time;
   }
 
   /**
-   * setReason - description
+   * setReason - Set what the last update this node reported, who and reason are required for all nodes such as
+   * vader, HELLO or when a node reports on another node luke, LOST, leia.
    *
-   * @param  {type} who    description
-   * @param  {type} reason description
-   * @param  {type} other  description
-   * @returns {type}        description
+   * @param  {string} who          who created the updated
+   * @param  {Notification} reason what the update was, HELLO, LOST, FOUND
+   * @param  {string} other        the other node that the report informed about
+   * @returns {undefined}          no return
    */
   setReason (who, reason, other) {
     this.who = who;
@@ -50,9 +52,9 @@ class Node {
   }
 
   /**
-   * toString - description
+   * toString - Create a human readable output for this node object
    *
-   * @returns {type}  description
+   * @returns {string}  Human readable format such as: vader ALIVE 1508405807560 vader HELLO
    */
   toString () {
     // eslint-disable-next-line max-len
@@ -62,10 +64,12 @@ class Node {
 
 class NodeReport {
   /**
-   * constructor - description
+   * constructor - An object to store fields created by a reporting node
    *
-   * @param  {type} report description
-   * @returns {type}        description
+   * @param  {string} report a line of the report output in the format
+   *                         "timeReceived timeSent name notification other node"
+   * @returns {NodeReport|ParseError} A new NodeReport object or a ParseError if the isn't enough
+   *                                  information (missing name) or invalid unix time stamp.
    */
   constructor (report) {
     const elements = report.split(/\s+/);

@@ -4,7 +4,7 @@
   "description": "Log parser system",
   "main": "app.js",
   "scripts": {
-    "docs": "serve -s docs",
+    "docs": "jsdoc -R README.md -d docs . && serve -s docs",
     "coverage": "serve -s coverage",
     "test": "NODE_ENV=test nyc --reporter=html mocha test --exit",
     "ci:test": "mocha test --exit"
@@ -21,6 +21,7 @@
   "homepage": "https://github.com/Penson122/bt-assessment#readme",
   "devDependencies": {
     "chai": "^4.1.2",
+    "jsdocs": "^1.0.0",
     "mocha": "^5.0.0",
     "nyc": "^11.4.1",
     "serve": "^6.4.8"
