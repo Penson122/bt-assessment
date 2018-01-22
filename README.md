@@ -1,5 +1,6 @@
 # Log Parser #
-## BT Coding Evaluation Submission
+
+## BT Coding Evaluation Submission
 
 This submission is written for Node 6.11, code is written according the eslint standard with plugins for the test environment.
 
