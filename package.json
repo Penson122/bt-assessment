@@ -4,7 +4,10 @@
   "description": "Log parser system",
   "main": "app.js",
   "scripts": {
-    "test": "mocha test --exit"
+    "docs": "serve -s docs",
+    "coverage": "serve -s coverage",
+    "test": "NODE_ENV=test nyc --reporter=html mocha test --exit",
+    "ci:test": "mocha test --exit"
   },
   "repository": {
     "type": "git",
@@ -17,6 +20,9 @@
   },
   "homepage": "https://github.com/Penson122/bt-assessment#readme",
   "devDependencies": {
-    "chai": "^4.1.2"
+    "chai": "^4.1.2",
+    "mocha": "^5.0.0",
+    "nyc": "^11.4.1",
+    "serve": "^6.4.8"
   }
 }

@@ -1,7 +1,14 @@
-const fs = require('fs');
+const Parser = require('./Parser.js');
 
-const parseInput = () => {
+const parser = new Parser('input.txt');
+parser.readFile();
+let reports;
 
-};
+try {
+  reports = parser.convertToReports();
+} catch (e) {
+  console.error(e);
+}
 
-module.exports = { parseInput };
+const nodes = Parser.parseReports(reports);
+nodes.map(n => console.log(n.toString()));
